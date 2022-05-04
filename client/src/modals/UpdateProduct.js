@@ -17,7 +17,7 @@ const UpdateProduct = observer(({ show, onHide }) => {
     // On recupere les types (categories)
     useEffect(() => {
         fetchTypes().then(data => products.setTypes(data));
-    }, []);
+    }, [products]);
 
     // Fonction pour mettre a jour le produit
     const changeProduct = () => {

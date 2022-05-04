@@ -25,7 +25,7 @@ const ProductPage = () => {
     useEffect(() => {
         fetchOneProduct(id)
             .then(data => setProduct(data));
-    }, []);
+    }, [id]);
 
 
     // On structure la page d'un produit

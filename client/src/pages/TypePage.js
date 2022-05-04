@@ -18,7 +18,7 @@ const TypePage = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => products.setTypes(data))
         fetchProducts().then(data => setProduct(data))
-    }, []);
+    }, [products]);
 
 
     // On filtre les produits recupere par typeId et on les affichent

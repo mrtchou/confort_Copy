@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { updateUser } from '../http/userAPI';
@@ -19,7 +19,7 @@ const UpdateUser = observer(({ show, onHide }) => {
 
     useEffect(() => {
         fetchOneUser(id).then(data => setUser(data));
-    }, []);
+    }, [id]);
 
 
 

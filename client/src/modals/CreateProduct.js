@@ -16,7 +16,7 @@ const CreateProduct = observer(({ show, onHide }) => {
     useEffect(() => {
         fetchTypes().then(data => products.setTypes(data));
         fetchProducts().then(data => products.setProducts(data));
-    }, [])
+    }, [products])
 
     const addInfo = () => {
         setInfo([...info, { title: '', description: '', number: Date.now() }]);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Button, ListGroup } from 'react-bootstrap';
 import { fetchUsers } from '../http/userAPI';
 
@@ -6,7 +6,6 @@ import { fetchUsers } from '../http/userAPI';
 const UpdateUserRole = ({ show, onHide }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState({});
-    const [role, setRole] = useState('');
 
 
     useEffect(() => {

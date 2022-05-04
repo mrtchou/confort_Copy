@@ -3,16 +3,14 @@ import { Card, Container, Button, Form } from 'react-bootstrap';
 import UpdateUser from '../modals/UpdateUser';
 import UpdateUserPassword from '../modals/UpdateUserPassword';
 import { fetchOneUser } from '../http/userAPI';
-import { deleteUser } from '../http/userAPI';
-import { SHOP_ROUTE } from '../utils/consts';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Context } from '..';
 import { fetchTypes } from '../http/typeAPI';
 import DeleteAccount from '../modals/DeleteAccount';
 
 const User = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
+
     const [user, setUser] = useState([]);
     const { products } = useContext(Context);
     const [updateUserVisible, setUpdateUserVisible] = useState(false);
@@ -20,20 +18,19 @@ const User = () => {
     const [deleteAccountVisible, setDeleteAccountVisible] = useState(false);
 
 
-    console.log(user.passsword + user.id + user.firstName + user + updateUserVisible)
 
 
     // On affiche les categories
     useEffect(() => {
         fetchTypes().then(data => products.setTypes(data))
-    }, []);
+    }, [products]);
 
 
     // On recupere un utilisateur via un id recuperer dans le token
     useEffect(() => {
         fetchOneUser(id)
             .then(data => setUser(data));
-    }, []);
+    }, [id]);
 
     console.log(user.passsword + user.id + user.firstName + user)
     // Fonction pour supprimer le compte de l'utilisateur

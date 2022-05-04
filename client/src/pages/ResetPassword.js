@@ -1,15 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
 import { SHOP_ROUTE } from '../utils/consts';
-import UpdateUser from '../modals/UpdateUser';
 import UpdateUserPassword from '../modals/UpdateUserPassword';
-import { fetchOneUser } from '../http/userAPI';
-import { deleteUser } from '../http/userAPI';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Context } from '..';
-import { fetchTypes } from '../http/typeAPI';
-import DeleteAccount from '../modals/DeleteAccount';
 
 
 
@@ -18,13 +11,7 @@ import DeleteAccount from '../modals/DeleteAccount';
 
 const ResetPassword = observer(() => {
     const [email, setEmail] = useState('');
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const [user, setUser] = useState([]);
-    const { products } = useContext(Context);
-    const [updateUserVisible, setUpdateUserVisible] = useState(false);
     const [updateUserPassVisible, setUpdateUserPassVisible] = useState(false);
-    const [deleteAccountVisible, setDeleteAccountVisible] = useState(false);
 
 
 
@@ -32,7 +19,6 @@ const ResetPassword = observer(() => {
     const validEmail = new RegExp(
         '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
     );
-
 
 
 
@@ -66,7 +52,6 @@ const ResetPassword = observer(() => {
         }
 
     }
-    console.log(email + user)
 
 
 

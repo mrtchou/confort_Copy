@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { updateUserPassword } from '../http/userAPI';
-import { useParams, useNavigate } from 'react-router-dom';
-import { LOGIN_ROUTE } from '../utils/consts';
+import { useParams } from 'react-router-dom';
+
 
 const UpdateUserPassword = ({ show, onHide }) => {
     const { id } = useParams();
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
 
     const changeUserPassword = () => {

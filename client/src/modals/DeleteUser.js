@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Modal, Form, ListGroup, Button } from 'react-bootstrap';
-import { fetchUsers, fetchOneUserM, deleteUser } from '../http/userAPI';
+import { fetchUsers, deleteUser } from '../http/userAPI';
 
 const DeleteUser = observer(({ show, onHide }) => {
     const [users, setUsers] = useState([]);                 // Stockage des users (utilisateurs)
     const [selectedUser, setSelectedUser] = useState({});   // User selectionne
-    const [usersM, setUsersM] = useState({});   // User selectionne
 
     // recuperation des users (utilisateurs)
     useEffect(() => {
         fetchUsers()
             .then(data => setUsers(data))
     }, []);
-    console.log(users)
-    console.log(usersM)
+
 
 
 
