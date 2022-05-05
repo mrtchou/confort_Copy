@@ -35,10 +35,13 @@ class productController {
         }
     };
 
+
     // Fonction de mise a jour du produit (fonction sequelize update)
     async updateProduct(req, res, next) {
         const { id } = req.params;
         let { name, price, typeId } = req.body;
+        console.log(name + 'heeeeeeeeeeeNAME', price + 'heeeeeeeeeeePRICE', typeId + req + 'heeeeeeeeeee')
+
         let product = await Product.update(
             {
                 name,
@@ -54,7 +57,12 @@ class productController {
 
     // Fonction de recuperation de tous les produits (fonction sequelize findAll)
     async getAllProducts(req, res, next) {
-        const products = await Product.findAll()
+        const products = await Product.findAll({
+            order: [
+                // Will escape title and validate DESC against a list of valid direction parameters
+                ['price', 'DESC']]
+        });
+
         return res.json(products);
     };
 

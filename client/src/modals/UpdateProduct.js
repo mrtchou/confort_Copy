@@ -5,22 +5,51 @@ import { Context } from '..';
 import { fetchTypes } from '../http/typeAPI';
 import { updateProduct } from '../http/productAPI';
 import { useParams } from 'react-router-dom';
+import { fetchOneProduct } from '../http/productAPI';
+
 
 const UpdateProduct = observer(({ show, onHide }) => {
     const { products } = useContext(Context);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const { id } = useParams();
+    const [product, setProduct] = useState({ info: [] })
+
 
     let typeId = products.selectedType.id;      // On recupere l'id de la categorie selectionnee
 
     // On recupere les types (categories)
     useEffect(() => {
         fetchTypes().then(data => products.setTypes(data));
-    }, [products]);
+    }, []);
+
+
+
+    // On recupere un produit via son id
+    useEffect(() => {
+        fetchOneProduct(id)
+            .then(data => setProduct(data));
+    }, [id]);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Fonction pour mettre a jour le produit
-    const changeProduct = () => {
+    const changeProduct = async () => {
+
+
+
+
         let datas = {
             name,
             price,
@@ -28,7 +57,7 @@ const UpdateProduct = observer(({ show, onHide }) => {
         };
         updateProduct(id, datas)
             .then(data => products.setProducts(data));
-        window.location.reload();
+        //window.location.reload();
     };
 
     return (
@@ -63,13 +92,13 @@ const UpdateProduct = observer(({ show, onHide }) => {
                         className='mt-3'
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        placeholder='Changer le nom du prouduit'
+                        placeholder={product.name + ' ' + ' ' + ' ' + 'ici on change le nom du produit'}
                     />
                     <Form.Control
                         className='mt-3'
                         value={price}
                         onChange={e => setPrice(Number(e.target.value))}
-                        placeholder='Changer le prix du produit'
+                        placeholder={product.price}
                         type='number'
                     />
                 </Form>

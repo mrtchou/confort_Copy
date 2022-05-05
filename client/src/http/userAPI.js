@@ -15,7 +15,7 @@ export const registration = async (
     const { data } = await $host.post('api/user/registration', {
         email,
         password,
-        role: "USER",
+        role: "ADMIN",
         firstName,
         lastName,
         adress,

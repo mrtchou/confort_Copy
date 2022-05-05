@@ -16,7 +16,7 @@ const CreateProduct = observer(({ show, onHide }) => {
     useEffect(() => {
         fetchTypes().then(data => products.setTypes(data));
         fetchProducts().then(data => products.setProducts(data));
-    }, [products])
+    }, [])
 
     const addInfo = () => {
         setInfo([...info, { title: '', description: '', number: Date.now() }]);
@@ -33,14 +33,14 @@ const CreateProduct = observer(({ show, onHide }) => {
         setFile(e.target.files[0]);
     };
 
-    const addProduct = () => {
+    const addProduct = async () => {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('price', price);
         formData.append('img', file);
         formData.append('typeId', products.selectedType.id);
         formData.append('info', JSON.stringify(info));
-        createProduct(formData).then(data => onHide());
+        await createProduct(formData).then(data => onHide());
         window.location.reload();
     };
 

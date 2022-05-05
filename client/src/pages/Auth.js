@@ -32,6 +32,14 @@ const Auth = observer(() => {
 
 
 
+
+
+
+
+
+
+
+
     // Fonction pour se logger ou s'enregistrer
     const click = async () => {
 
@@ -48,6 +56,9 @@ const Auth = observer(() => {
             console.log('console.log dans fichier auth.js ligne 42 check si password conforme regex')
         }
         else {
+
+
+
             try {
                 console.log(email + 'ligne 46')
                 if (isLogin) {
@@ -61,7 +72,7 @@ const Auth = observer(() => {
                 user.setUser(user);
                 user.setIsAuth(true);           // l'utilisateur est connecter (true)
                 navigate(SHOP_ROUTE);           // on redirige vers la page d'accueil
-                window.location.reload();       // on recharge la page pour afficher correctement les infos de l'utilisateur
+                window.location.reload();// on recharge la page pour afficher correctement les infos de l'utilisateur
             } catch (e) {
 
             };
