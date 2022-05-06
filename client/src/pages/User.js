@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Card, Container, Button, Form } from 'react-bootstrap';
-import UpdateUser from '../modals/UpdateUser';
-import UpdateUserPassword from '../modals/UpdateUserPassword';
 import { fetchOneUser } from '../http/userAPI';
 import { useParams } from 'react-router-dom';
 import { Context } from '..';
 import { fetchTypes } from '../http/typeAPI';
+import UpdateUser from '../modals/UpdateUser';
+import UpdateUserPassword from '../modals/UpdateUserPassword';
 import DeleteAccount from '../modals/DeleteAccount';
 
 const User = () => {
     const { id } = useParams();
-
     const [user, setUser] = useState([]);
     const { products } = useContext(Context);
     const [updateUserVisible, setUpdateUserVisible] = useState(false);
@@ -18,32 +17,21 @@ const User = () => {
     const [deleteAccountVisible, setDeleteAccountVisible] = useState(false);
 
 
-
-
     // On affiche les categories
     useEffect(() => {
-        fetchTypes().then(data => products.setTypes(data))
-    }, [products]);
+        fetchTypes().then(data => products.setTypes(data));
+    }, []);
 
 
     // On recupere un utilisateur via un id recuperer dans le token
     useEffect(() => {
-        fetchOneUser(id)
-            .then(data => setUser(data));
-    }, [id]);
+        fetchOneUser(id).then(data => setUser(data));
+    }, []);
 
-    console.log(user.passsword + user.id + user.firstName + user)
-    // Fonction pour supprimer le compte de l'utilisateur
-    /* const removeUser = async () => {
-        await deleteUser(id);           // on supprime le compte
-        localStorage.clear();               // on vide le localstorage
-        navigate(SHOP_ROUTE);               // on redirige vers la page d'accueil
-        window.location.reload();           // on recharge la page pour afficher tout a jours
-    }; */
 
     return (
-        <Container className='mt-5 d-flex justify-content-center'>
-            <Card className='mt-5 p-2' border="info" style={{ width: '18rem' }}>
+        <Container className='userContainer'>
+            <Card className='userCard'>
                 <Card.Header>Mes coordonnes:</Card.Header>
                 <Form>
                     <Form.Label className='mt-3'>Prenom:</Form.Label>

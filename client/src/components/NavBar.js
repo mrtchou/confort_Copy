@@ -16,27 +16,38 @@ const NavBar = observer(() => {
         user.setUser({});
         user.setIsAuth(false);
         localStorage.removeItem('token');
+        window.location.reload();
     };
+
 
     // S'il y a un token, on le stock dans jwt pour recuper l'id de l'utilisateur et son role pour la NavBar
     if (localStorage.getItem('token')) {
         const jwt = jwt_decode(localStorage.getItem('token'));
+        const sessionExpired = () => {
+            const date = Date.now();
+            const dateString = date.toString();
+            const now = dateString.slice(0, 10);
+            if (jwt.exp < now) {
+                logOut();
+            };
+        };
+
         useEffect(() => {
             fetchOneUser(jwt.id)                // on recupere un utilisateur par son id
                 .then(data => setUserInfo(data))    // on stock les infos recuperer pour les utiliser dans la NavBar
-        }, [jwt.id]); //ici entre crochet yavait rien ESLINT ma suggere dajouter jwt.id entre crochet ou supprimer, alors jai ajoute pour teste
+            sessionExpired();
+        }, []);
     };
 
 
     return (
-        <Navbar id='NavBar' /* collapseOnSelect expand="lg" */ /* bg="dark" variant="dark" */>
+        <Navbar id='NavBar'>
             <Container>
-                <Navbar.Brand href={SHOP_ROUTE}>C&D</Navbar.Brand>
+                <Navbar.Brand id='siteTitle' href={SHOP_ROUTE}>Confort & Design</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href={SHOP_ROUTE}>Accueil</Nav.Link>
-                        {/* <Nav.Link href="#pricing">Contacts</Nav.Link> */}
                         <NavDropdown title="Categories" id="collasible-nav-dropdown">
                             {products.types.map(type =>
                                 <NavDropdown.Item
@@ -63,13 +74,12 @@ const NavBar = observer(() => {
                                     Se decoonecter
                                 </NavDropdown.Item>
                             </NavDropdown>
-                            {/* <Nav.Link href={BASKET_ROUTE}>Panier</Nav.Link> */}
                         </Nav>
 
                         :
-                        /* Et s'il n'y a pas de token, on affiche la route vers la page de la connexion */
+
                         <Nav>
-                            <Nav.Link href={LOGIN_ROUTE}>Compte</Nav.Link>
+                            <Nav.Link href={LOGIN_ROUTE}>Se connecter</Nav.Link>        {/* Et s'il n'y a pas de token, on affiche la route vers la page de la connexion */}
                         </Nav>
                     }
                 </Navbar.Collapse>

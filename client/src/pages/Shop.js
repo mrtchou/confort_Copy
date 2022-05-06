@@ -13,12 +13,12 @@ const Shop = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => products.setTypes(data))
         fetchProducts(null).then(data => products.setProducts(data))
-    }, [products]);
+    }, []);
 
 
     // On importe la liste des produits depuis le component ProductList et on l'affiche
     return (
-        <Container>
+        <Container className='shopContainer' >
             <Row>
                 <Col>
                     <ProductsList />

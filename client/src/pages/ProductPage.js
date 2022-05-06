@@ -25,19 +25,13 @@ const ProductPage = () => {
     useEffect(() => {
         fetchOneProduct(id)
             .then(data => setProduct(data));
-    }, [id]);
-
+    }, []);
 
     // On structure la page d'un produit
     return (
-        <Container className='mt-5'>
+        <Container className='productPageContainer'>
             <div className='d-flex'>
-                <div className="p-2 d-flex flex-column">
-                    {/* <Image src={process.env.REACT_APP_API_URL + product.img} style={{cursor: 'pointer'}} width={70} />
-                    <Image src={process.env.REACT_APP_API_URL + product.img} style={{cursor: 'pointer'}} width={70} className='mt-3' />
-                    <Image src={process.env.REACT_APP_API_URL + product.img} style={{cursor: 'pointer'}} width={70} className='mt-3' />
-                    <Image src={process.env.REACT_APP_API_URL + product.img} style={{cursor: 'pointer'}} width={70} className='mt-3' /> */}
-                </div>
+
                 <div className="p-2"><Image src={process.env.REACT_APP_API_URL + product.img} style={{ cursor: 'pointer' }} width={500} /></div>
                 <Col /* className='d-flex justify-content-center' */>
                     {role.role === 'ADMIN' ?
@@ -68,11 +62,15 @@ const ProductPage = () => {
                         <div className="ml-auto p-2">
                             <h2>{product.name}</h2>
                             <p className='price'>{product.price}€</p>
-                            <Button variant='btn btn-success'>Ajouter au panier</Button>
                         </div>
                     }
+                    <div>
+                        <p>Ce produit vous interesse?</p>
+                        <p>Appellez au +337 01 01 01 09</p>
+                    </div>
                 </Col>
             </div>
+
             <Card className='mt-5 mb-5'>
                 <div className='d-flex flex-column p-2'>
                     <h2>Description:</h2>

@@ -7,6 +7,122 @@
   pointer-events: none;
 }
 
+#NavBar {
+  background-color: rgba(88, 52, 82, 0.877);
+}
+
+#siteTitle {
+  text-shadow: -5px 5px 10px #000000;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+}
+
+.shopContainer {
+  padding-top: 2rem;
+  padding-bottom: 10%;
+  box-shadow: 0px 0px 20px 9px;
+}
+
+.productItem {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.productItem:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 3px;
+}
+
+.productItemCard {
+  border-color: white;
+}
+
+.productPageContainer {
+  padding-top: 2rem;
+  padding-bottom: 10%;
+  box-shadow: 0px 0px 20px 9px;
+}
+
+.productPageContact {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  font-size: large;
+}
+
+.price {
+  font-size: 1.5rem;
+}
+
+.adminContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 20% 10% 20%;
+  box-shadow: 0px 0px 20px 9px;
+}
+
+.adminText {
+  display: flex;
+  align-self: center;
+  font-size: 2rem;
+  color: black;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.userContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 5%;
+  box-shadow: 0px 0px 20px 9px;
+}
+
+.userCard {
+  width: 50%;
+  padding: 0.5rem;
+}
+
+
+
+
+.inputInvalid {
+  color: red;
+}
+
+.footerContainer {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.footerLink {
+  display: inline-block;
+  cursor: default;
+}
+
+#instagram {
+  width: 3rem;
+  cursor: pointer;
+  margin: 3px;
+}
+
+#whatsapp {
+  width: 3.5rem;
+  cursor: pointer;
+  margin: 3px;
+}
+
+
+
+
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

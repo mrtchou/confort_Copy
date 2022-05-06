@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import CreateType from '../modals/CreateType';
 import UpdateType from '../modals/UpdateType';
 import DeleteType from '../modals/DeleteType';
 import CreateProduct from '../modals/CreateProduct';
-import UpdateUserRole from '../modals/UpdateUserRole';
 import DeleteUser from '../modals/DeleteUser';
 
 // On cree les hook pour afficher ou fermer les fonctions
@@ -13,15 +12,14 @@ const Admin = () => {
     const [updateTypeVisible, setUpdateTypeVisible] = useState(false);
     const [deleteTypeVisible, setDeleteTypeVisible] = useState(false);
     const [createProductVisible, setCreateProductVisible] = useState(false);
-    const [updateUserVisible, setUpdateUserVisible] = useState(false);
     const [deleteUserVisible, setDeleteUserVisible] = useState(false);
 
     return (
-        <Container className='d-flex flex-column'>
-            <h2 className='mt-5 d-flex align-self-center'>Categories</h2>
+        <Container className='adminContainer'>
+            <Form.Text className='adminText'>Categories</Form.Text>
             <Button
                 variant='outline-dark'
-                className='mt-5'
+                className='mt-2'
                 onClick={() => setCreateTypeVisible(true)}
             >
                 Ajouter une categorie
@@ -46,24 +44,17 @@ const Admin = () => {
 
 
 
-            <h2 className='mt-5 d-flex align-self-center'>Produits</h2>
+            <Form.Text className='adminText'>Produits</Form.Text>
             <Button
                 variant='outline-dark'
-                className='mt-5'
+                className='mt-2'
                 onClick={() => setCreateProductVisible(true)}
             >
                 Ajouter un produit
             </Button>
             <CreateProduct show={createProductVisible} onHide={() => setCreateProductVisible(false)} />
 
-            <h2 className='mt-5 d-flex align-self-center'>Utilisateurs</h2>
-            <Button
-                variant='outline-dark'
-                className='mt-5'
-                onClick={() => setUpdateUserVisible(true)}
-            >
-                Modifier un utilisateur
-            </Button>
+            <Form.Text className='adminText'>Utilisateurs</Form.Text>
             <Button
                 variant='outline-dark'
                 className='mt-2'
@@ -71,7 +62,6 @@ const Admin = () => {
             >
                 Supprimer un utilisateur
             </Button>
-            <UpdateUserRole show={updateUserVisible} onHide={() => setUpdateUserVisible(false)} />
             <DeleteUser show={deleteUserVisible} onHide={() => setDeleteUserVisible(false)} />
         </Container>
     );
